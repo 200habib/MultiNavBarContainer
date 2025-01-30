@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md h-[70px] flex items-center px-4 md:px-10 z-50">
+        <div class="container mx-auto flex justify-between items-center w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center">
+                <img src="assets/images/roundwolf.png" alt="logo" class="h-12 w-12">
+            </a>
+            <!-- Search -->
+            <div class="hidden md:flex relative">
+                <input type="text" placeholder="Type Something" class="border border-solid border-gray-400 text-gray-300 text-sm px-10 py-2 rounded-full">
+                <i class="fa fa-search absolute left-4 top-3 text-gray-400"></i>
+            </div>
+            <!-- Navigation -->
+            <nav>
+                <ul class="hidden md:flex space-x-6 text-gray-600">
+                    <li><a href="index.html" class="text-pink-500 font-medium">Home</a></li>
+                    <li><a href="browse.html" class="hover:text-pink-500">Browse</a></li>
+                    <li><a href="details.html" class="hover:text-pink-500">Details</a></li>
+                    <li><a href="streams.html" class="hover:text-pink-500">Streams</a></li>
+                    <li>
+                        <a href="profile.html" class="flex items-center">
+                            <img src="assets/images/avatar.png" alt="avatar" class="h-8 w-8 rounded-full">
+                        </a>
+                    </li>
+                </ul>
+                <div class="md:hidden flex items-center">
+                    <button class="text-pink-500 text-xl focus:outline-none" id="menu-btn">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-[70px] left-0 w-full bg-white shadow-md flex flex-col text-center py-4">
+        <a href="index.html" class="py-2 text-pink-500">Home</a>
+        <a href="browse.html" class="py-2 hover:text-pink-500">Browse</a>
+        <a href="details.html" class="py-2 hover:text-pink-500">Details</a>
+        <a href="streams.html" class="py-2 hover:text-pink-500">Streams</a>
+        <a href="profile.html" class="py-2">
+            <img src="assets/images/avatar.png" alt="avatar" class="h-8 w-8 mx-auto rounded-full">
+        </a>
+
+</body>
+
+</html>
