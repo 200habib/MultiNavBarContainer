@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar with Pure CSS</title>
+    <style>
+        /* General styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        header {
+            display: flex;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            background: white;
+            min-height: 70px;
+            align-items: center;
+            position: relative;
+            z-index: 50;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Logo styles */
+        .logo {
+            width: 144px; /* w-36 */
+        }
+
+        .logo-short {
+            width: 36px; /* w-9 */
+            display: none; /* Hidden by default */
+        }
+
+        .logo-img {
+            height: 120px;
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                display: none; /* Hide full logo on small screens */
+            }
+            .logo-short {
+                display: block; /* Show short logo on small screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%); /* Center logo on desktop */
+            }
+        }
+
+        /* Menu styles */
+        #collapseMenu {
+            display: none; /* Hidden by default on mobile */
+        }
+
+        @media (min-width: 1024px) {
+            #collapseMenu {
+                display: block; /* Show menu on desktop */
+            }
+        }
+
+        #collapseMenu ul {
+            display: flex;
+            gap: 1.25rem; /* lg:gap-x-5 */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #collapseMenu ul li a {
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        #collapseMenu ul li a:hover {
+            color: #007bff; /* hover:text-[#007bff] */
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 1023px) {
+            #collapseMenu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5); /* max-lg:before:bg-black max-lg:before:opacity-50 */
+                z-index: 50;
+                display: none; /* Hidden by default */
+            }
+
+            #collapseMenu.active {
+                display: block; /* Show when active */
+            }
+
+            #collapseMenu ul {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 50%;
+                min-width: 300px;
+                height: 100%;
+                background: white;
+                padding: 1.5rem;
+                box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                gap: 0;
+            }
+
+            #collapseMenu ul li {
+                border-bottom: 1px solid #e5e5e5; /* max-lg:border-b */
+                padding: 0.75rem 0; /* max-lg:py-3 */
+            }
+
+            #collapseMenu ul li a {
+                display: block;
+            }
+
+            #toggleClose {
+                position: fixed;
+                top: 0.5rem;
+                right: 1rem;
+                z-index: 100;
+                background: white;
+                border: 1px solid #e5e5e5;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+            #toggleClose svg {
+                width: 14px;
+                height: 14px;
+                fill: black;
+            }
+        }
+
+        /* Login and Signup buttons */
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem; /* space-x-6 */
+            margin-left: auto;
+        }
+
+        .auth-buttons a {
+            color: #007bff;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .auth-buttons a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-buttons button {
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background: #007bff;
+            border: 2px solid #007bff;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .auth-buttons button:hover {
+            background: transparent;
+            color: #007bff;
+        }
+
+        /* Mobile menu toggle button */
+        #toggleOpen {
+            display: none; /* Hidden by default */
+        }
+
+        @media (max-width: 1023px) {
+            #toggleOpen {
+                display: block; /* Show on mobile */
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            #toggleOpen svg {
+                width: 28px;
+                height: 28px;
+                fill: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <img src="./img/raven5.png" alt="logo" class="logo-img">
+            </a>
+            <a href="#" class="logo-short">
+                <img src="./img/raven5.png" alt="logo" class="logo-img">
+            </a>
+
+            <!-- Menu -->
+            <div id="collapseMenu">
+
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Feature</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <!-- Auth buttons and mobile toggle -->
+            <div class="auth-buttons">
+                <a href="#">Login</a>
+                <button>Sign up</button>
+                <button id="toggleOpen">
+                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        // Toggle mobile menu
+        const toggleOpen = document.getElementById('toggleOpen');
+        const toggleClose = document.getElementById('toggleClose');
+        const collapseMenu = document.getElementById('collapseMenu');
+
+        toggleOpen.addEventListener('click', () => {
+            collapseMenu.classList.add('active');
+        });
+
+        toggleClose.addEventListener('click', () => {
+            collapseMenu.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
